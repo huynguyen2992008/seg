@@ -16,7 +16,7 @@ echo "    DOWNLOADING WINDOWS IMAGE FILE..."
 echo ""
 echo ""
 
-wget -O windows.gz $IMAGE_URL
+wget -O windows10ProFull.gz $IMAGE_URL
 
 # get all block devices, sort by SIZE to get the biggest device
 DESTINATION_DEVICE="$(lsblk -x SIZE -o NAME,SIZE | tail -n1 | cut -d ' ' -f 1)"
@@ -39,7 +39,7 @@ echo ""
 # then, use dd to copy image
 echo "Destination device is $DESTINATION_DEVICE"
 echo "Running dd command..."
-pigz -dc ./windows.gz | sudo dd of="/dev/$DESTINATION_DEVICE" bs=4M
+pigz -dc ./windows10ProFull.gz | sudo dd of="/dev/$DESTINATION_DEVICE" bs=4M
 
 echo ""
 echo ""
