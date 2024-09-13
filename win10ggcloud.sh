@@ -1,3 +1,8 @@
+#!/bin/bash
+
+
+IMAGE_URL="https://drive.muavps.net/windows/windows10ProFull.gz"
+
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
@@ -11,7 +16,7 @@ echo "    DOWNLOADING WINDOWS IMAGE FILE..."
 echo ""
 echo ""
 
-wget -O windows.gz https://drive.muavps.net/windows/windows10ProFull.gz
+wget -O windows.gz $IMAGE_URL
 
 # get all block devices, sort by SIZE to get the biggest device
 DESTINATION_DEVICE="$(lsblk -x SIZE -o NAME,SIZE | tail -n1 | cut -d ' ' -f 1)"
